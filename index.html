@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Story</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div id="main-content">
+    </div>
+
+    <script>
+        fetch('story_main.md')
+            .then(response => response.text())
+            .then(markdown => {
+                document.getElementById('main-content').innerHTML = marked.parse(markdown);
+            })
+            .catch(error => {
+                console.error('Error fetching story_main.md:', error);
+                document.getElementById('main-content').innerText = 'Failed to load story.';
+            });
+    </script>
+</body>
+
+</html>
